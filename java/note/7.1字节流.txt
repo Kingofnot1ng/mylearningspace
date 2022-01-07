@@ -1,0 +1,10 @@
+                                        InputStream
+                                              |
++--------------------+---------------+--------+--------+----------------+-------------------+
+|                    |               |                 |                |                   |
+|                    |               |                 |                |                   |
+ByteArrayInputStream FileInputStream FilterInputStream PipedInputStream SequenceInputStream ObjectInputStream
+                                     |
+                                     +-------------------+
+                                     |                   |
+                                     BufferedInputStream DataInputStream

@@ -1,0 +1,2 @@
+交换容器 swap(vec)
+预留空间 reserve(int len)

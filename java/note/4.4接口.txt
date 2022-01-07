@@ -1,0 +1,3 @@
+接口是一种特殊抽象类，只具有全局变量(public static final)和抽象方法(没有方法体)，默认方法和静态方法(分别以default和static修饰)
+定义 [public] interface 接口名 [extends 接口1，接口2...]
+使用 class A implements 接口1[,接口2...]

@@ -1,0 +1,7 @@
+public class 与 class 的区别
+    1.一个Java源文件中可以定义多个class。
+    2.一个java源文件中public class不是必须的。
+    3.一个class会被编译成一个xxx.class字节码文件。
+    4.public class 的类名必须和Java文件的名字相同。
+      且一个Java文件只能有一个public class类。
+    5.每一个class中都可以编写main方法作为程序入口。如果一个class没有main方法，那么不能通过java [classname]命令来访问这个类。

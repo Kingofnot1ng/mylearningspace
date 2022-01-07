@@ -1,0 +1,4 @@
+instanceof 关键字
+    instanceof关键字可以判定一个对象是否属于某个类或者接口，语法如下
+        对象名 instanceof 类(或接口)
+    如果对象是指定类的实例，则表达式的值为true，否则为false

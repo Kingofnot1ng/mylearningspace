@@ -1,0 +1,15 @@
+ifconfig -a 查看ip地址
+sudo su -切换至root用户
+exit 从root用户中退出
+passwd *(用户名) 修改用户密码
+reboot 重启
+rm 用于删除一个文件或者目录。 
+	-i 删除前逐一询问确认。
+	-f 即使原档案属性设为唯读，亦直接删除，无需逐一确认。
+	-r 将目录及以下之档案亦逐一删除。
+
+apt-get update && apt-get upgrade && apt-get clean 更新
+dpkg-reconfigure locales 设置语言
+Ctrl Z 挂起当前进程
+Ctrl  C 杀死当前进程
+route add default gw IP 添加默认网关

@@ -1,0 +1,58 @@
+函数对象也叫仿函数
+	概念：
+		重载operator()()/小括号/函数调用操作符的类，其对象称为仿函数
+		函数对象调用重载的()时，行为类似函数调用，也叫仿函数
+	本质：
+		是一个类而非一个函数
+	特点：
+		函数对象在使用时，可以想普通函数那样调用，可以有参数和返回值
+		函数对象超出普通函数的概念，函数对象可以有自己的状态
+		函数对象可以作为参数传递
+	
+谓词
+	定义:
+		返回bool类型的仿函数称为谓词
+		如果operator()接受一个参数称为一元谓词
+		如果operator()接受两个参数称为二元谓词
+
+内建函数对象
+	用法：
+		和一般函数完全相同
+		需要引入头文件<functional>
+	STL内建了一些函数对象，分为3类
+		1.算数仿函数
+			主要实现4则运算，有
+			template<class T>
+			T plus<T>;
+			template<class T>
+			T mius<T>;
+			template<class T>
+			T multiplies<T>;
+			template<class T>
+			T divides<T>;
+			template<class T>
+			T modulus<T>;
+			template<class T>
+			T negate<T>;
+		2.关系仿函数
+			实现关系对比
+			template<class T>
+			bool equal_to<T>;
+			template<class T>
+			bool not_equal_to<T>;
+			template<class T>
+			bool greater<T>;
+			template<class T>
+			bool greater_equal<T>;
+			template<class T>
+			bool less<T>;
+			template<class T>
+			bool less_equal<T>;
+		3.逻辑仿函数
+			template<class T>
+			bool logical_and<T>;
+			template<class T>
+			bool logical_or<T>;
+			template<class T>
+			bool logical_not<T>;
+	

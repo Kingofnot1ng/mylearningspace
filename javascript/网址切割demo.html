@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let url="https://www.baidu.com   https://www.company.com.cn              https://www.w3school.com.edu ";
+        let url2=url.replace(/(?<=\.(com|edu|cn))(?<!www\.(com|edu|cn))\s*(?!\.(com|edu|cn))/g,",")
+        let arr=url2.split(",");
+        
+        console.log(url);
+        
+        console.log(url2);
+        console.log(arr,);
+
+        let url3="https://www.company.com";
+        let arr2="com|edu|cn|gov|org"
+        let reg = new RegExp("^https?:\/\/(www\.)?\\w+(\.("+arr2+"))+$");
+        console.log(url3.search(/^https?:\/\/(www\.)?\w+(\.(com|edu|cn|gov|org))+$/))
+        console.log(url3.search(reg))
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

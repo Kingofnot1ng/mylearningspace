@@ -4,7 +4,7 @@
 	推荐到甲骨文官网下载jdk软件包：https://www.oracle.com/
 三、JDK环境变量配置
 	cmd命令行输入java -version查看是否安装成功
-		      java -verbose查看jdk安装路径
+		    java -verbose查看jdk安装路径
 四、java程序的编译和运行
 	新建文本文件，改后缀名为.java
 	向java文件中输入如下代码：
@@ -14,5 +14,5 @@
     		}
 	}
 	在cmd命令行窗口用javac Hello.java 编译生成.class文件
-		             java Hello 运行生成的Java程序
+		            java Hello 运行生成的Java程序
 五、

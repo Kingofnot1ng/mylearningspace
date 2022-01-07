@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "AenqdfdLIxU9FmolITgaRElbjtn1flZQUDQfpoSFeeRgJk/ED/a1qCxPhx3JtCgFRazMvXmjcH7+LJGM3MpFFQ==",
+  "success": true,
+  "projectFilePath": "G:\\mylearningspace\\c#\\code\\csharp1\\csharp1\\csharp1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

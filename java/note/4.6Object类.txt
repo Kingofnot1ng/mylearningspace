@@ -1,0 +1,6 @@
+Object类是所有类的父类，也叫做超类
+定义一个类时，若其没有显式extends指明继承类，将自动默认继承Object类
+Object类常用方法
+    1.boolean equals(); 判断两个对象是否相等
+    2.int hashcode(); 返回这个对象的哈希码值
+    3.String toString(); 返回对象的字符串表达形式

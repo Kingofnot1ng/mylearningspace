@@ -1,0 +1,29 @@
+Throwable类---------+
+|                   |
+Error---+           Exception----+
+|       |           |            |
+IOError AWTError    其他子类      RuntimeException-----+---------------------+
+                                 |                    |                     |                        
+                                 ArithmeticException  ClassCaseException    其他子类  
+
+一、Throwable给出的三个异常信息：
+    1.getMessage()
+    2.toString()
+    3.printStackTrace()
+二、try catch处理异常
+程序抛出异常没有被捕获会导致程序终止，使用trycatch可以使程序正常运行下去
+try{
+
+}catch(ExceptionType e){
+    对e的处理
+}
+三、finally
+在所有try后面的catch块结束后，可以跟一个finally块。无论是否有异常被捕获，这个块中的语句都会执行
+四、throws
+    [方法修饰列表] 返回值类型 方法名(方法参数列表) throws 异常1,异常2...{
+        方法体
+    }
+五、自定义异常
+自定义异常必须继承自Exception或其子类
+需提供两个构造方法 空参数和字符串参数
+

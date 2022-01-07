@@ -1,0 +1,15 @@
+一、Collection接口
+    单列集合类的标准实现接口，有两个重要子接口。
+    1.List。有ArrayList和LinkedList、Vector。特点是元素有序，可重复，有索引
+    2.Set。有HashSet/LinkedHashSet和TreeSet。特点是元素无序，不可重复
+二、Map接口
+    双列集合内的标准实现接口，有三个重要子接口。
+    1.HashTable。Properties
+    2.HashMap。LinkedHashMap
+    3.TreeMap
+三、迭代器Iterator
+    获取方式 Iterator iterator1=集合对象.iterator();
+    成员方法:
+        boolean hasNext();
+        E next();
+        void remove();
