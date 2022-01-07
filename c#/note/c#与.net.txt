@@ -1,0 +1,22 @@
+一、.net平台与.net framework框架
+	.net framework提供了一个稳定的运行环境来保证基于.net平台开发的各种应用能正常运转
+	.net framework:
+		1.CLR公共运行时
+		2..net类库(BCL)
+二、c#是什么
+	c#是一种编程语言，可以开发基于.net平台的程序
+	//java即是一种平台也是一种语言
+三、c#能做什么
+	1.windows桌面应用
+	2.ASP.net，internet应用程序
+	3.wp手机开发
+	4.unity3d游戏开发
+四、.NET的两种交互模式
+	1.C/S，客户端服务器模式。客户端需要安装专门的客户端程序。
+	2.B/S, 浏览器服务器模式。客户端只需要安装浏览器。
+五、.NET框架的特点：一种框架、多种语言
+六、基类库
+	类库是一个与公共语言运行库集成的可重用的类的集合
+七、CLR
+	.NET编译器将源程序编译为.exe或.dll文件。但是这两种文件并不是cpu能直接执行的机器代码，而是IL（中间语言     Intermediate Language）代码。当需要运行程序时，CLR的Class Loader会将IL代码装入内存，然后通过及时编译(Just-In-Time)方式将其编译为用户平台CPU可以直接执行的机器码。
+

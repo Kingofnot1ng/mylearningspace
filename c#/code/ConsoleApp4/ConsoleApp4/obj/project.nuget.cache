@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "TayUPPw/KwUUV5K74YU057yJ3dbm49+O8wSO0PHWMSK1TkNvQRUDzOmTrozDPtLskGUPGdaGYhfrXrIeNHEM3g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\mylearningspace\\c#\\code\\ConsoleApp4\\ConsoleApp4\\ConsoleApp4.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
