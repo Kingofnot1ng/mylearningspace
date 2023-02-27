@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        a:{{a}}
+        b:{{obj.b}}
+        <input type="text" v-focus="true"> 
+        
+    </div>
+    <div>
+        <div v-my-directive></div>
+    </div>
+    
+    <div id="app1">
+        <!-- app1:{{msg}} -->
+    </div>
+    <div id="app2">
+        app2:{{msg}}
+    </div>
+    <script>
+        //自定义指令
+        Vue.directive('focus',{
+            //元素被插入到dom中调用
+            inserted(el,binding){
+                if(binding.value){
+                    el.focus();
+                }
+            }                       
+        })
+        //编写自己的vue插件
+        let MyPlugin={};
+        MyPlugin.install=function(Vue,options){
+            Vue.directive('my-directive',{
+                bind(el,binding){
+                    el.style="width:100px;height:100px;background-color:#ccc"
+                }
+            })
+        }
+        //加载插件
+        Vue.use(MyPlugin,{
+            someOption:true
+        })
+        //混入属性
+        Vue.mixin({
+            data(){
+                return {
+                    msg1:'msg1'
+                }
+            },
+            created() {
+                console.log('混入的created');
+                var myOption=this.$options.myOption;
+                if(myOption){
+                    console.log(myOption.toUpperCase());
+                }
+            },
+        })
+        
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                msg:"Hello world!",
+                a:"我是根级响应数据a",
+                obj:{}
+            },
+            myOption:'hELLO Vue',
+            created(){
+                console.log('Vue的created'); 
+            }
+        })
+
+        //添加响应式数据
+        Vue.set(vm.obj,'b','我是Vue.set()方法添加的响应数据b')
+
+        
+
+        //vue拓展
+        var Vue2=Vue.extend({
+            data(){
+                return {msg:'vue子类'}
+            }
+        })
+        var vm1=new Vue({
+            el:'#app1',
+        })
+        var vm2=new Vue2({
+            el:'#app2'
+        })
+
+
+    </script>
+</body>
+</html>

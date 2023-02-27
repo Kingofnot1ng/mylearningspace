@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component2></my-component2>
+        <my-component2></my-component2>
+        <p>{{title}}</p>
+        <my-component3></my-component3>
+        <!--父组件向子组件传递信息-->
+        <my-parent name="title"></my-parent>
+        <!--子组件向父组件传递信息-->
+        <parent></parent>
+    </div>
+     <!--temple模板-->
+    <template id="tmp1">
+        <p>{{title}}</p>
+    </template>
+    <template id="tmp2">
+        <div>
+            <button @click="click">Send</button>
+            <input type="text" v-model="message">
+        </div>
+    </template>
+    <template id="tmp3">
+        <div>
+            <child @childfn = "transContent"></child>
+            <p>子组件传递的值{{message}}</p>
+        </div>
+    </template>
+    <script>
+        //全局自定义组件
+        Vue.component('my-component',{
+            data(){
+                return{count:0}
+            },
+            template:'<button v-on:click="count++">被单击{{count}}次</button>'
+        })
+        //通过template标签定义组件
+        Vue.component('my-component3',{
+            data(){
+                return{title:"组件的title"}
+            },
+            template:'#tmp1'
+        })
+        Vue.component('my-parent',{
+            //规定组件可以通过哪些属性传递数据
+            props:['name'],
+            template:'<div>我是父组件{{name}}</div>'
+        })
+        Vue.component('child',{
+            data(){
+                return {
+                    message:"子组件信息"
+                }
+            },
+            template:'#tmp2',
+            methods:{
+                click(){
+                    this.$emit("childfn", this.message)
+                }
+            }
+
+        })
+        Vue.component('parent',{
+            data(){
+                return {
+                    message:""
+                }
+            },
+            template:'#tmp3',
+            methods: {
+                transContent(transData){
+                    this.message =transData
+                }
+            }
+        })
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                msg:"Hello world!",
+                title:"vm实例的title"
+            },
+            //局部自定义组件
+            components:{
+                myComponent2:{template:'<p>局部自定义组件</p>'}
+            }
+        })
+    </script>
+</body>
+</html>

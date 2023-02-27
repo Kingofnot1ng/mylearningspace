@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <a @click="zhanghao=true">账号登录</a>
+            <a @click="zhanghao=false">二维码登录</a>
+        </div>
+        <zhanghao v-if="zhanghao"></zhanghao>
+        <erweima v-else></erweima>
+    </div>
+    <template id="zhanghao">
+        <div>
+            <div>用户名：<input type="text" v-model="name"></div>
+            <div>密码：<input type="password" v-model="password"></div>
+            <button @click="login()">登录</button>
+            <button @click="cancel()">取消</button>
+        </div>       
+    </template>
+    <template id="erweima">
+        <div>
+            <div style="width: 200px;height:200px;background: #00ffd7;"></div>
+            <div><p>请扫描二维码登录</p></div>
+        </div>
+    </template>
+    <script>
+        Vue.component('zhanghao',{
+            data(){
+                return{
+                    name:"",
+                    password:""
+                }
+            },
+            methods: {
+                login(){
+                    console.log("登录")
+                },
+                cancel(){
+                    console.log("取消")
+                }
+            },
+            template:'#zhanghao'
+        })
+        Vue.component('erweima',{
+            template:'#erweima'
+        })
+        var vm=new Vue({
+            el:'#app',
+            data:{
+               zhanghao:false
+            },
+        })
+    </script>
+</body>
+</html>

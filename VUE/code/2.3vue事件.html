@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-on:click="doParent">
+            <button v-on:click="doThis">事件冒泡</button>
+            <!--.stop修饰符阻止事件冒泡-->
+            <button v-on:click.stop="doThis">阻止事件冒泡</button>
+        </div>
+        <div>
+            <!--.prevent阻止默认事件-->
+            <a href="https://www.baidu.com" v-on:click.prevent>阻止默认事件</a>
+            <a href="https://www.baidu.com">不阻止默认事件</a>
+        </div>
+        <div v-on:click.capture="doParent">
+            <button v-on:click="doThis">事件捕获</button>
+        </div>
+
+        <div v-on:click.self="doParent">
+            <button v-on:click="doThis">self事件</button>
+        </div>
+        <div>
+            <!--.once只会执行一次事件-->
+            <button v-on:click.once="doThis">只执行一次</button>
+        </div>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                msg:"Hello world!"
+            },
+            methods:{
+                doThis(){
+                    console.log("我是被点击元素事件")
+                },
+                doParent(){
+                    console.log("我是父元素事件")
+                }
+            }
+        })
+    </script>
+</body>
+</html>

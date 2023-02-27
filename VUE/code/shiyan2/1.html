@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>第一个数：<input type="text" v-model="n1"></div>
+        <div>第二个数：<input type="text" v-model="n2"></div>
+        <button @click="fun">比较</button>
+        <p>{{text}}</p>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                n1:"",
+                n2:"",
+                text:""
+            },
+            methods:{
+                fun(){
+                    number1=parseInt(this.n1)
+                    number2=parseInt(this.n2)
+                    if(number1>number2){
+                        this.text="第一个数字大"
+                    }else if(number1==number2){
+                        this.text="两个数字一样大"
+                    }else if(number1<number2){
+                        this.text="第二个数字大"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

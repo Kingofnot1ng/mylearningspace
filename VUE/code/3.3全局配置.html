@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                msg:"Hello world!"
+            }
+        })
+        //生产提示信息开关
+        console.log(Vue.config.productionTip)
+        //关闭提示和警告
+        console.log(Vue.config.silent)
+        //开关调试工具
+        console.log(Vue.config.devtools)
+    </script>
+</body>
+</html>

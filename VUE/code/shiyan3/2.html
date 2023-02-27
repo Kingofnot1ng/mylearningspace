@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <a @click="isLogin=true;isRegister=false">登录</a>
+        <a @click="isRegister=true;isLogin=false">注册</a>
+        <login v-if="isLogin"></login>
+        <register v-if="isRegister"></register>
+    </div>
+    <script>
+        let MyPlugin = {}
+        MyPlugin.install=function(Vue,options){
+            Vue.component('login',{
+                template:'<div><p>登录界面</p></div>'
+            })
+            Vue.component('register',{
+                template:'<div><p>注册界面</p></div>'
+            })
+        }
+        Vue.use(MyPlugin,{})
+        var vm=new Vue({
+            el:'#app',
+            data:{
+               isLogin:false,
+               isRegister:false
+            },
+        })
+        console.log(vm.$root)
+    </script>
+</body>
+</html>

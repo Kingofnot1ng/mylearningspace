@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <p>{{msg}}</p>
+        <button @click="showInfo">请点击</button>
+        <p>{{msg2}}</p>
+        <p>总价格：{{totalPrice}}</p><p>单价：{{price}}</p><p>数量：{{num}}</p>
+        <div>
+            <button @click="num>0?num--:0">减少数量</button>
+            <button @click="num++">增加数量</button>
+        </div>
+        <input type="text" v-model="inputText">
+        <p>{{msg3 | toUpcase}}</p>
+        <!--标签属性绑定vue数据-->
+        <p :style="style">123</p>
+    </div>
+    <script>
+        var vm=new Vue({
+            /*el：唯一根标签。在创建vue实例时指定一个id或class，将vue实例与页面标签绑定*/
+            el:'#app',
+            //data：数据对象。将所需要的数据添加到vue实例上，再通过插值表达式在页面上引用
+            data:{
+                msg:"Vue实例创建成功",
+                msg2:"111",
+                price:10,
+                num:0,
+                inputText:"请输入文本",
+                msg3:"hello",
+                style:"background-color: red;"
+            },
+            //methods:方法。使用@调用vue方法
+            methods: {
+                showInfo:function(){
+                    this.msg2="222"
+                }
+            },
+            //computed:计算属性。是方法，但是当属性使用。有缓存机制，即当数据改变时会调用此方法计算，否则不会重复计算。
+            computed:{
+                totalPrice(){return this.price*this.num}
+            },
+            //监视。同名的data数据变化时，调用此方法
+            watch:{
+                inputText(newText,oldText){
+                    console.log(newText,oldText)
+                }
+            },
+            filters:{
+                toUpcase(value){
+                    return value?value.toUpperCase():value;
+                }
+            }
+        })
+
+        //既可以通过data属性直接访问原始数据，也可以通过vue提供的getter和setter设置data数据 
+        console.log(vm.$data.msg);
+        console.log(vm.msg);
+    </script>
+</body>
+</html>

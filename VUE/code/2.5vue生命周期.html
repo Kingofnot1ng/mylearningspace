@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <div v-if="isShow" ref="div">test</div>
+        <button @click="isShow=!isShow">更新</button>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                msg:"Hello world!",
+                isShow:true
+            },
+            beforeCreate() {
+                console.log("实例创建之前")
+                console.log(this.msg)
+            },
+            created() {
+                console.log("实例创建之后")
+                console.log(this.msg)
+            },
+            beforeMount() {
+                console.log("挂载之前")
+                console.log(this.$el.innerHTML)
+            },
+            mounted() {
+                console.log("挂载之后")
+                console.log(this.$el.innerHTML)
+            },
+            beforeUpdate() {
+                console.log("更新之前")
+                console.log(this.$refs.div)
+            },
+            updated() {
+                console.log("更新之后")
+                console.log(this.$refs.div)
+            },
+            beforeDestroy() {
+                console.log("销毁之前")
+                console.log(this.$refs.div)
+                console.log(this.msg)
+            },
+            destroyed() {
+                console.log("销毁之后")
+                console.log(this.$refs.div)
+                console.log(this.msg)
+            },
+        })
+    </script>
+</body>
+</html> 

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-component>
+            <template #item1>
+                <a href="https://www.baidu.com">百度</a>
+            </template>
+            <template #item2>
+                <a href="https://www.taobao.com">淘宝</a>
+            </template>
+            <template #item3>
+                <a href="https://www.jd.com">京东</a>
+            </template>
+        </my-component>   
+    </div>
+    <template id="navigationBar">
+        <div>
+            <slot name="item1"></slot>
+            <slot name="item2"></slot>
+            <slot name="item3"></slot>
+        </div>
+    </template>
+    <script>
+        Vue.component('my-component',{
+            data(){
+                return{count:0}
+            },
+            template:'#navigationBar'
+        })
+        var vm=new Vue({
+            el:'#app',
+            data:{
+            },
+            methods:{
+            }
+        })
+    </script>
+</body>
+</html>

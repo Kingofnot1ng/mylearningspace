@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--样式绑定-->
+        <div :style="{backgroundColor:pink,width:width,height:height}">
+            <div :style="myDiv"></div>
+        </div>
+        <input type="text" v-model:value="msg">
+        <p v-text="msg2"></p>
+        <div v-html="html"></div>
+        <!--v-bind:xxx可直接简写为:xxx-->
+        <input type="text" v-bind:value="msg3">
+        <div>
+            <button v-on:click="showInfo">请点击</button>
+            <p>{{msg4}}</p>
+        </div>
+        <div v-for="(value,key) in list" >
+            索引：{{key}},值:{{value}}
+        </div>
+        <!--v-if控制元素是否渲染，v-show控制元素是否显示-->
+        <div v-if="isShow">v-if</div>
+        <div><button @click="isShow=!isShow">显示/隐藏</button></div>
+    </div>
+    <script>
+        //绑定样式是为了通过vue对象操作样式
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                //样式对象
+                myDiv:{
+                    backgroundColor:'red',
+                    width:"100px",
+                    height:'100px'
+                },
+                pink:'pink',
+                width:'100%',
+                height:'200px',
+                msg:"v-model",
+                msg2:"v-text",
+                html:"<h2>我是v-html</h2>",
+                msg3:"v-bind",
+                msg4:"",
+                list:['a','b','c'],
+                isShow:true
+            },
+            methods: {
+                showInfo:function(){
+                    this.msg4="v-on"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

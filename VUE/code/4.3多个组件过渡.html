@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <template id="example1">
+        <span>我是登录组件</span>
+    </template>
+    <template id="example2">
+        <span>我是注册组件</span>
+    </template>
+    <div id="app">
+        <a href="javascript:;" @click="componentName='example1'">登录</a>
+        <a href="javascript:;" @click="componentName='example2'">注册</a>
+        <transition mode="in-out">
+            <component :is="componentName"></component>
+        </transition>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                componentName:'example1'
+            },
+            components:{
+                example1:{template:'#example1'},
+                example2:{template:'#example2'}
+            }
+        })
+    </script>
+</body>
+</html>

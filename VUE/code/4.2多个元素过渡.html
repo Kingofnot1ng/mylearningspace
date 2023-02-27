@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <transition>
+            <ul v-if="items.length>0">
+                <li>项目一</li>
+                <li>项目二</li>
+            </ul>
+            <p v-else>抱歉，没有查找到内容</p>
+        </transition>    
+        <button @click="isEdit=!isEdit">切换模式</button>
+        <transition mode="out-in">
+            <button v-if="isEdit" key="edit">编辑</button>
+            <button key="save">保存</button>
+        </transition>
+        <transition mode="out-in">
+            <button v-bind:key="isEdit">{{isEdit?"编辑":"保存"}}</button>
+        </transition>     
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                msg:"Hello world!",
+                items:[],
+                isEdit:true
+            }
+        })
+    </script>
+</body>
+</html>

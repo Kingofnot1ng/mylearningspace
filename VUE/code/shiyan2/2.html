@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>第一个数：<input type="text" v-model="n1"></div>
+        <div>第二个数：<input type="text" v-model="n2"></div>
+        <button @click="fun('+')">+</button>
+        <button @click="fun('-')">-</button>
+        <button @click="fun('*')">*</button>
+        <button @click="fun('/')">/</button>
+        <p>结果是：{{result}}</p>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                n1:"",
+                n2:"",
+                sign:"",
+            },
+            methods: {
+                fun(sign){
+                    this.sign=sign
+                }
+            },
+            computed:{
+                result(){
+                    number1=parseInt(this.n1)
+                    number2=parseInt(this.n2)
+                    switch(this.sign){
+                        case '+':
+                            return number1+number2
+                        case '-':
+                            return number1-number2
+                        case '*':
+                            return number1*number2
+                        case '/':
+                            return number1/number2
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

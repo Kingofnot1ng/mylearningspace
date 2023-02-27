@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-parent></my-parent>
+        <p>{{base}}</p>
+        <p>{{noBase}}</p>    
+        <button @click="child">展示子组件</button>  
+    </div>
+    <div id="app1">
+        <p>我是根元素结构</p>
+    </div>
+    <div id="app2">
+        <my-component id="test">
+            nihao
+            <template v-slot:second>
+                <div>第二个插槽的内部结构</div>
+            </template>
+        </my-component>
+    </div>
+
+    <template id="parent">
+        <div>
+            <button @click="root">展示根实例</button> 
+            <h3>手机信息搜索</h3>
+            手机品牌：<input type="text" v-model="brand">
+            <my-child v-bind:cbrand="brand"></my-child>
+        </div>
+    </template>
+
+    <template id="child">
+        <div><ul>
+            <li>手机品牌：{{show.brand}}</li>
+            <li>手机型号：{{show.type}}</li>
+            <li>市场价格：{{show.price}}</li>
+        </ul></div>
+    </template>
+
+    <template id="slot">
+        <div>
+            <button @click="test">展示属性</button>
+            <!--默认插槽-->
+            <slot></slot>
+            <!--具名插槽-->
+            <slot name="second"></slot>
+        </div>
+    </template>
+    <script>
+        Vue.component('my-child',{
+            template:'#child',
+            props:['cbrand'],
+            data(){
+                return {
+                    phones:[
+                        {
+                            brand:'华为',
+                            type:'mate50',
+                            price:'3999'
+                        },
+                        {
+                            brand:'苹果',
+                            type:'iphone14',
+                            price:'5999'
+                        },
+                        {
+                            brand:'小米',
+                            type:'Xiaomi MIX Fold 2',
+                            price:'8999'
+                        },
+                    ],
+                    show:{brand:'',type:'',price:''}
+                }
+            },
+            watch:{
+                cbrand(){
+                    //使用$props调用vm实例属性
+                    if(this.$props.cbrand){
+                        var found={brand:'',type:'',price:''}
+                        this.phones.forEach((value,index)=>{
+                            if(value.brand==this.$props.cbrand){
+                                found=value
+                            }
+                        })
+                        this.show=found
+                    }
+                }
+            }
+        })
+        Vue.component('my-parent',{
+            template:'#parent',    
+            data(){
+                return {
+                    brand:''
+                }
+            },
+            methods:{
+                root(){
+                    console.log(this.$root)
+                }
+            }
+        })
+        Vue.component('my-component',{
+            template:'#slot',
+            methods:{
+                test(){
+                    console.log(this.$attrs)
+                }
+            }
+        })
+        var vm=new Vue({
+            el:'#app',
+            customOption:'我是自定义数据',
+            data:{
+                msg:"Hello world!",
+                base:'我是data里的数据'
+            },
+            methods: {
+                child(){
+                    console.log(this.$children)
+                }
+            },
+            created() {
+                //获取vm选项
+                this.noBase=this.$options.customOption
+            },
+        })
+
+        var vm1=new Vue({
+            el:'#app1',
+        })
+        
+        //获取当前实例的根元素
+        vm1.$el.innerHTML ="<div>我是替换后的div标签</div>"
+        
+        var vm2=new Vue({
+            el:'#app2',
+        })
+    </script>
+</body>
+</html>

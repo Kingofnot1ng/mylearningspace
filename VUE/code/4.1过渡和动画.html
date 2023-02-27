@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/velocity.js"></script>
+    <link  rel="stylesheet" href="./css/animate.css"  >
+    <style>
+        .chart {
+            width: 200px;
+            height: 50px;
+            background-color: orange;
+        }
+        .circular{
+            width: 200px;
+            height: 50px;
+            background-color: blue;
+        }
+        .box-enter-active,.box-leave-active {
+            transition: width 3s;
+        }
+        .box-enter,.box-leave-to {
+            width:0px;
+        }
+        .box-enter-to,.box-leave {
+            width: 200px;
+        }
+        .bounce-enter-active {
+            animation: Anim 1s;
+        }
+        .bounce-leave-active {
+            animation: Anim 1s reverse;
+        }
+        @keyframes Anim{
+            0%{
+                transform: scale(0);
+                background: red;
+            }
+            100%{
+                transform: scale(1);
+                background: blue;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button @click="toggle">改变图形宽度</button>
+        <transition name="box">
+            <div class="chart" v-if="show">
+
+            </div>
+        </transition >
+        <button @click="toggle1">显示/隐藏</button>
+        <transition appear appear-active-class="animate__animated animate__bounceInLeft" enter-active-class="animate__animated animate__bounceInLeft" leave-active-class="animate__animated animate__bounceOutLeft">
+            <p v-if="show1">
+                过渡文字效果
+            </p>
+        </transition>
+        <button @click="toggle2">使用@keyframes创建CSS动画</button>
+        <transition name="bounce">
+            <div class="circular" v-if="show2">
+                圆形
+            </div>
+        </transition>
+        <button @click="show3=!show3">动画效果</button>
+        <transition 
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @leave="leave"
+            v-bind:css="false"
+        >
+        <p v-if="show3">
+            文字动画效果
+        </p>
+        </transition>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                msg:"Hello world!",
+                show:true,
+                show1:true,
+                show2:true,
+                show3:true
+            },
+            methods: {
+                toggle(){
+                    this.show=!this.show
+                },
+                toggle1(){
+                    this.show1=!this.show1
+                },
+                toggle2(){
+                    this.show2=!this.show2
+                },
+                beforeEnter: function (el) {
+                    el.style.opacity = 0
+                    el.style.transformOrigin = 'left'
+                },
+                enter: function (el, done) {
+                    Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
+                    Velocity(el, { fontSize: '1em' }, { complete: done })
+                },
+                leave: function (el, done) {
+                    Velocity(el, { translateX: '15px', rotateZ: '50deg' }, { duration: 600 })
+                    Velocity(el, { rotateZ: '100deg' }, { loop: 2 })
+                    Velocity(el, {
+                        rotateZ: '45deg',
+                        translateY: '30px',
+                        translateX: '30px',
+                        opacity: 0
+                    }, { complete: done })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

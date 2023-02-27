@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/home">进入</router-link>
+        <router-link :to="{name:'登录'}">登录2</router-link>
+        <router-view ></router-view>
+    </div>
+    <template id="home">
+        <div>
+            <h1>这里是主页</h1>
+            <router-link to="/home/login">登录</router-link>
+            <router-link :to="{name:'登录'}">登录1</router-link>
+            <router-link to="/home/register">注册</router-link>
+            <router-view ></router-view>
+        </div>
+    </template>
+    <script>
+        var home={
+            template:'#home'
+        }
+        var login={
+            template:'<h2>这里是登录</h2>'
+        }
+        var register={
+            template:'<h2>这里是注册</h2>'
+        }
+        var router=new VueRouter({
+            routes:[
+                {
+                    path:'/home',
+                    component:home,
+                    children:[
+                        {
+                            path:'login',
+                            name:'登录',
+                            component:login,
+                        },
+                        {
+                            path:'register',
+                            component:register,
+                        }
+                    ]
+                }
+            ]
+        })
+        var vm=new Vue({
+            el:'#app',
+            router
+        })
+    </script>
+</body>
+</html>

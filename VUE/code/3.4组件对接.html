@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <my-component>成功渲染</my-component>
+    </div>
+    <script>
+        //混入对象和vm冲突时以vm为主
+        var myMixin={
+            data(){
+                return {
+                    msg:'mixin的数据'
+                }
+            },
+            methods: {
+                hello(){
+                    console.log('hello form mixin')
+                }
+            },
+            created() {
+                console.log('created form mixin')
+            },
+        }
+        Vue.component('my-component',{
+            render(createElement) {
+                return createElement('p',{
+                    style:{
+                        color:'red',
+                        fontsize:'16px',
+                        backgroundColor:"#eee"
+                    }
+                },this.$slots.default)
+            },
+        })
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                msg:"Hello world!"
+            },
+            mixins:[myMixin],
+            created(){
+                console.log('created form vm')
+                this.hello()
+            }
+        })
+    </script>
+</body>
+</html>
